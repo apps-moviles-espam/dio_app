@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   //Iniciar la inyección de dependencias
+  DependencyInjection.initialize();
   runApp(const MyApp());
 }
 

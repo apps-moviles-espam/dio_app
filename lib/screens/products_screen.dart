@@ -15,8 +15,13 @@ class ProductsScreen extends StatefulWidget {
 
 class _ProductsScreenState extends State<ProductsScreen> {
   //Agregar la inyección de dependencias con GetIt
+  final ProductAPI productAPI = GetIt.instance<ProductAPI>();
 
   //Crear la función llamada loadProducts() para la consulta de los datos
+  Future<List<Product>> loadProducts() async {
+    HttpResponse<ProductsResponse> response = await productAPI.getAllProducts();
+    return response.data!.products;
+  }
 
   @override
   Widget build(BuildContext context) {
