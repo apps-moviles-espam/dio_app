@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:dio_app/models/rating.dart';
+
 List<Product> productFromJson(String str) =>
     List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
 
@@ -58,26 +60,6 @@ final categoryValues = EnumValues({
   "men's clothing": Category.MEN_S_CLOTHING,
   "women's clothing": Category.WOMEN_S_CLOTHING
 });
-
-class Rating {
-  double rate;
-  int count;
-
-  Rating({
-    required this.rate,
-    required this.count,
-  });
-
-  factory Rating.fromJson(Map<String, dynamic> json) => Rating(
-        rate: json["rate"]?.toDouble(),
-        count: json["count"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "rate": rate,
-        "count": count,
-      };
-}
 
 class EnumValues<T> {
   Map<String, T> map;
